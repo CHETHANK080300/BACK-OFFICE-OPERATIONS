@@ -29,6 +29,9 @@ export interface Application {
 }
 
 export const mockApplications: Application[] = [
+  // ==========================================
+  // CUSTOMER 1: Juan Dela Cruz (CIF10001)
+  // ==========================================
   {
     id: "APP001",
     customerId: "CIF10001",
@@ -116,7 +119,7 @@ export const mockApplications: Application[] = [
   {
     id: "APP002",
     customerId: "CIF10001",
-    product: "Personal Loan",
+    product: "Personal Express Loan",
     type: "Personal Express Loan",
     submittedDate: "10 Sep 2026",
     status: "Under Review",
@@ -186,70 +189,296 @@ export const mockApplications: Application[] = [
       },
     ],
   },
+
+  // ==========================================
+  // CUSTOMER 2: Maria Santos (CIF10002)
+  // ==========================================
   {
-    id: "APP003",
-    customerId: "CIF10001",
-    product: "USD Savings Account Opening",
-    type: "Foreign Currency Account",
-    submittedDate: "28 Aug 2026",
+    id: "APP2001",
+    customerId: "CIF10002",
+    product: "World Mastercard Elite Upgrade",
+    type: "Credit Card Upgrade",
+    submittedDate: "05 Sep 2026",
     status: "Completed",
-    lastUpdated: "30 Aug 2026",
-    assignedOfficer: "Clarissa Reyes (RM)",
+    lastUpdated: "08 Sep 2026",
+    assignedOfficer: "Marco Mendoza",
     submittedDocuments: [
-      "FATCA Declaration Form.pdf",
-      "US Dollar Source of Funds.pdf",
+      "Annual Tax Return 2025.pdf",
+      "High Net Worth Statement.pdf",
     ],
-    verificationStatus: "Verified & Compliant",
+    verificationStatus: "Verified - Approved for Elite Privileges",
     comments: [
       {
-        user: "Clarissa Reyes",
-        date: "30 Aug 2026, 04:00 PM",
-        text: "Account opened and welcome kit dispatched.",
+        user: "Marco Mendoza",
+        date: "08 Sep 2026, 02:00 PM",
+        text: "Approved Elite Mastercard upgrade with ₱1M credit limit and airport lounge access.",
       },
     ],
     activityHistory: [
       {
-        date: "30 Aug 2026, 04:00 PM",
-        action: "Account successfully opened",
+        date: "08 Sep 2026, 02:00 PM",
+        action: "Card upgrade completed",
+        actor: "Marco Mendoza",
+      },
+    ],
+    journey: [
+      {
+        title: "Application Submitted",
+        date: "05 Sep 2026",
+        status: "Completed",
+        description: "Submitted through Wealth Portal.",
+      },
+      {
+        title: "Verification",
+        date: "06 Sep 2026",
+        status: "Completed",
+        description: "Wealth tier eligibility verified.",
+      },
+      {
+        title: "Approved",
+        date: "08 Sep 2026",
+        status: "Completed",
+        description: "World Mastercard upgrade approved.",
+      },
+      {
+        title: "Completed",
+        date: "08 Sep 2026",
+        status: "Completed",
+        description: "Elite Card delivered to Alabang Branch.",
+      },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 3: Jose Reyes (CIF10003)
+  // ==========================================
+  {
+    id: "APP3001",
+    customerId: "CIF10003",
+    product: "Personal Salary Loan Refinancing",
+    type: "Personal Loan",
+    submittedDate: "01 Sep 2026",
+    status: "Approved",
+    lastUpdated: "04 Sep 2026",
+    assignedOfficer: "Patricia Garcia",
+    submittedDocuments: [
+      "Certificate of Employment & Compensation.pdf",
+      "Pay Slips Aug 2026.pdf",
+    ],
+    verificationStatus: "Verified - Salary deductions approved by employer",
+    comments: [
+      {
+        user: "Patricia Garcia",
+        date: "04 Sep 2026, 03:30 PM",
+        text: "Refinancing application cleared at lower interest rate of 8.5% p.a.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "04 Sep 2026, 03:30 PM",
+        action: "Loan approved",
+        actor: "Patricia Garcia",
+      },
+    ],
+    journey: [
+      {
+        title: "Application Submitted",
+        date: "01 Sep 2026",
+        status: "Completed",
+        description: "Submitted online.",
+      },
+      {
+        title: "Verification",
+        date: "03 Sep 2026",
+        status: "Completed",
+        description: "Payroll deduction agreement confirmed.",
+      },
+      {
+        title: "Approved",
+        date: "04 Sep 2026",
+        status: "Completed",
+        description: "Loan terms signed and approved.",
+      },
+      {
+        title: "Completed",
+        date: "04 Sep 2026",
+        status: "Completed",
+        description: "Funds credited to Everyday ATM Savings.",
+      },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 4: Ana Garcia (CIF10004)
+  // ==========================================
+  {
+    id: "APP4001",
+    customerId: "CIF10004",
+    product: "SME Working Capital Line Increase",
+    type: "Business Line of Credit",
+    submittedDate: "11 Sep 2026",
+    status: "Under Review",
+    lastUpdated: "15 Sep 2026",
+    assignedOfficer: "Rafael Tan",
+    submittedDocuments: [
+      "Audited Financial Statements 2024-2025.pdf",
+      "Business Permit & SEC Registration.pdf",
+      "Collateral Property Title Cebu.pdf",
+    ],
+    verificationStatus: "Underwriting Assessment in Progress",
+    comments: [
+      {
+        user: "Rafael Tan",
+        date: "15 Sep 2026, 10:15 AM",
+        text: "Collateral appraisal report completed for Cebu commercial property.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "15 Sep 2026, 10:15 AM",
+        action: "Appraisal report uploaded",
+        actor: "Rafael Tan",
+      },
+    ],
+    journey: [
+      {
+        title: "Application Submitted",
+        date: "11 Sep 2026",
+        status: "Completed",
+        description: "SME Credit expansion submitted.",
+      },
+      {
+        title: "Documents Received",
+        date: "12 Sep 2026",
+        status: "Completed",
+        description: "Financials & property titles received.",
+      },
+      {
+        title: "Verification",
+        date: "15 Sep 2026",
+        status: "Current",
+        description: "Commercial underwriting & risk review.",
+      },
+      {
+        title: "Approved",
+        date: "-",
+        status: "Pending",
+        description: "Credit committee decision pending.",
+      },
+      {
+        title: "Completed",
+        date: "-",
+        status: "Pending",
+        description: "Contract signing and limit activation.",
+      },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 5: Mark Tan (CIF10005)
+  // ==========================================
+  {
+    id: "APP5001",
+    customerId: "CIF10005",
+    product: "Gold Cashback Visa Credit Card",
+    type: "Credit Card Application",
+    submittedDate: "01 May 2023",
+    status: "Completed",
+    lastUpdated: "05 May 2023",
+    assignedOfficer: "Sheila Cruz",
+    submittedDocuments: ["Company ID & COE.pdf", "TIN Card.pdf"],
+    verificationStatus: "Verified & Card Activated",
+    comments: [
+      {
+        user: "Sheila Cruz",
+        date: "05 May 2023, 01:00 PM",
+        text: "New credit card approved and delivered to Davao address.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "05 May 2023, 01:00 PM",
+        action: "Card activated",
+        actor: "Mark Tan",
+      },
+    ],
+    journey: [
+      {
+        title: "Application Submitted",
+        date: "01 May 2023",
+        status: "Completed",
+        description: "Applied via Mobile App.",
+      },
+      {
+        title: "Approved",
+        date: "03 May 2023",
+        status: "Completed",
+        description: "₱200k limit approved.",
+      },
+      {
+        title: "Completed",
+        date: "05 May 2023",
+        status: "Completed",
+        description: "Card received and activated.",
+      },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 6: Clarissa Mendoza (CIF10006)
+  // ==========================================
+  {
+    id: "APP6001",
+    customerId: "CIF10006",
+    product: "Fixed Income Bond Portfolio Allocation",
+    type: "Investment Subscription",
+    submittedDate: "10 Apr 2022",
+    status: "Completed",
+    lastUpdated: "15 Apr 2022",
+    assignedOfficer: "Clarissa Reyes",
+    submittedDocuments: [
+      "Suitability & Risk Disclosure Form.pdf",
+      "Investment Mandate.pdf",
+    ],
+    verificationStatus: "Verified - Accredited Investor Status Cleared",
+    comments: [
+      {
+        user: "Clarissa Reyes",
+        date: "15 Apr 2022, 11:00 AM",
+        text: "₱2M bond portfolio allocated at 6.10% p.a. fixed coupon.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "15 Apr 2022, 11:00 AM",
+        action: "Bond purchase executed",
         actor: "Clarissa Reyes",
       },
     ],
     journey: [
       {
         title: "Application Submitted",
-        date: "28 Aug 2026",
+        date: "10 Apr 2022",
         status: "Completed",
-        description: "Submitted in person at BGC Branch.",
-      },
-      {
-        title: "Documents Received",
-        date: "28 Aug 2026",
-        status: "Completed",
-        description: "FATCA forms and passport verified.",
+        description: "Private banking investment mandate.",
       },
       {
         title: "Verification",
-        date: "29 Aug 2026",
+        date: "12 Apr 2022",
         status: "Completed",
-        description: "AML and KYC compliance check completed.",
-      },
-      {
-        title: "Credit Assessment",
-        date: "29 Aug 2026",
-        status: "Completed",
-        description: "Deposit account review cleared.",
+        description: "Accredited investor classification.",
       },
       {
         title: "Approved",
-        date: "30 Aug 2026",
+        date: "14 Apr 2022",
         status: "Completed",
-        description: "Account creation approved.",
+        description: "Treasury allocation approved.",
       },
       {
         title: "Completed",
-        date: "30 Aug 2026",
+        date: "15 Apr 2022",
         status: "Completed",
-        description: "USD Account XXXX-9821 created.",
+        description: "Bond holding active in portfolio.",
       },
     ],
   },

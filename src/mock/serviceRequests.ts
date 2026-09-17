@@ -8,7 +8,9 @@ export interface ServiceRequest {
     | "Account Statement"
     | "Password Reset"
     | "Complaint"
-    | "General Inquiry";
+    | "General Inquiry"
+    | "Checkbook Request"
+    | "VIP Travel Notice";
   createdDate: string;
   priority: "High" | "Medium" | "Low";
   status:
@@ -32,6 +34,9 @@ export interface ServiceRequest {
 }
 
 export const mockServiceRequests: ServiceRequest[] = [
+  // ==========================================
+  // CUSTOMER 1: Juan Dela Cruz (CIF10001)
+  // ==========================================
   {
     id: "SR001",
     customerId: "CIF10001",
@@ -121,11 +126,6 @@ export const mockServiceRequests: ServiceRequest[] = [
         action: "Status updated to Closed",
         actor: "Agent 04",
       },
-      {
-        date: "10 Sep 2026, 09:30 AM",
-        action: "Request Submitted with proof of billing",
-        actor: "Juan Dela Cruz",
-      },
     ],
     timeline: [
       {
@@ -135,28 +135,281 @@ export const mockServiceRequests: ServiceRequest[] = [
         description: "Address update request initiated.",
       },
       {
-        title: "Assigned",
-        date: "10 Sep 2026",
-        status: "Completed",
-        description: "Assigned to Operations.",
-      },
-      {
-        title: "Under Investigation",
-        date: "10 Sep 2026",
-        status: "Completed",
-        description: "Utility bill verification passed.",
-      },
-      {
-        title: "Resolved",
+        title: "Closed",
         date: "11 Sep 2026",
         status: "Completed",
         description: "Core banking record updated.",
       },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 2: Maria Santos (CIF10002)
+  // ==========================================
+  {
+    id: "SR2001",
+    customerId: "CIF10002",
+    type: "VIP Travel Notice",
+    createdDate: "12 Sep 2026",
+    priority: "Medium",
+    status: "Open",
+    assignedTo: "Marco Mendoza (RM)",
+    description:
+      "Travel advisory notification for upcoming trip to Tokyo, Japan from Sep 20 to Oct 05, 2026. Requesting higher international card transaction limits.",
+    sla: "24 Hours",
+    resolutionDate: "Target: 13 Sep 2026",
+    comments: [
+      {
+        user: "Marco Mendoza",
+        date: "12 Sep 2026, 04:00 PM",
+        text: "Flagged overseas travel notice on World Mastercard XXXX-3333 and raised daily POS limit to ₱500k.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "12 Sep 2026, 04:00 PM",
+        action: "Travel flag set in card fraud engine",
+        actor: "Marco Mendoza",
+      },
+    ],
+    timeline: [
+      {
+        title: "Request Created",
+        date: "12 Sep 2026",
+        status: "Completed",
+        description: "Travel notice submitted via Wealth App.",
+      },
+      {
+        title: "Assigned",
+        date: "12 Sep 2026",
+        status: "Completed",
+        description: "Assigned to Private Banking RM.",
+      },
+      {
+        title: "Under Investigation",
+        date: "12 Sep 2026",
+        status: "Current",
+        description: "Overseas limit authorization in progress.",
+      },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 3: Jose Reyes (CIF10003)
+  // ==========================================
+  {
+    id: "SR3001",
+    customerId: "CIF10003",
+    type: "Account Statement",
+    createdDate: "05 Sep 2026",
+    priority: "Low",
+    status: "Closed",
+    assignedTo: "Agent 02 - Support",
+    description:
+      "Request for certified 6-month bank statement for visa application.",
+    sla: "24 Hours",
+    resolutionDate: "06 Sep 2026",
+    comments: [
+      {
+        user: "Agent 02 - Support",
+        date: "06 Sep 2026, 10:00 AM",
+        text: "Digitally signed bank statement generated and emailed to customer.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "06 Sep 2026, 10:00 AM",
+        action: "Statement emailed",
+        actor: "Agent 02",
+      },
+    ],
+    timeline: [
+      {
+        title: "Request Created",
+        date: "05 Sep 2026",
+        status: "Completed",
+        description: "Statement request submitted.",
+      },
       {
         title: "Closed",
-        date: "11 Sep 2026",
+        date: "06 Sep 2026",
         status: "Completed",
-        description: "Notification emailed to customer.",
+        description: "E-statement sent.",
+      },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 4: Ana Garcia (CIF10004)
+  // ==========================================
+  {
+    id: "SR4001",
+    customerId: "CIF10004",
+    type: "Checkbook Request",
+    createdDate: "13 Sep 2026",
+    priority: "Medium",
+    status: "In Progress",
+    assignedTo: "Agent 08 - Commercial Operations",
+    description:
+      "Request for 5 commercial checkbooks for SME Business Checking Account XXXX-1111.",
+    sla: "48 Hours",
+    resolutionDate: "Target: 15 Sep 2026",
+    comments: [
+      {
+        user: "Agent 08",
+        date: "13 Sep 2026, 02:30 PM",
+        text: "Checkbook order sent to security printing vendor. Estimated delivery to Cebu Branch on Sep 16.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "13 Sep 2026, 02:30 PM",
+        action: "Sent to printer vendor",
+        actor: "Agent 08",
+      },
+    ],
+    timeline: [
+      {
+        title: "Request Created",
+        date: "13 Sep 2026",
+        status: "Completed",
+        description: "Checkbook request submitted online.",
+      },
+      {
+        title: "Under Investigation",
+        date: "14 Sep 2026",
+        status: "Current",
+        description: "Security checkbook printing in progress.",
+      },
+    ],
+  },
+  {
+    id: "SR4002",
+    customerId: "CIF10004",
+    type: "Transaction Dispute",
+    createdDate: "02 Sep 2026",
+    priority: "High",
+    status: "Resolved",
+    assignedTo: "Agent 05 - Fraud Ops",
+    description:
+      "Disputed duplicate POS charge of ₱12,500 at office supplies store.",
+    sla: "72 Hours",
+    resolutionDate: "04 Sep 2026",
+    comments: [
+      {
+        user: "Agent 05",
+        date: "04 Sep 2026, 04:15 PM",
+        text: "Merchant confirmed duplicate system posting. Credit adjustment of ₱12,500 posted back to account.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "04 Sep 2026, 04:15 PM",
+        action: "Credit adjustment posted",
+        actor: "Agent 05",
+      },
+    ],
+    timeline: [
+      {
+        title: "Request Created",
+        date: "02 Sep 2026",
+        status: "Completed",
+        description: "Dispute ticket opened.",
+      },
+      {
+        title: "Resolved",
+        date: "04 Sep 2026",
+        status: "Completed",
+        description: "Funds credited back.",
+      },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 5: Mark Tan (CIF10005)
+  // ==========================================
+  {
+    id: "SR5001",
+    customerId: "CIF10005",
+    type: "Password Reset",
+    createdDate: "08 Sep 2026",
+    priority: "Low",
+    status: "Closed",
+    assignedTo: "Automated Self-Service",
+    description: "Mobile App biometric re-binding and password reset request.",
+    sla: "15 Mins",
+    resolutionDate: "08 Sep 2026",
+    comments: [
+      {
+        user: "System",
+        date: "08 Sep 2026, 11:20 AM",
+        text: "OTP verified and Face ID successfully re-linked.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "08 Sep 2026, 11:20 AM",
+        action: "Self-service reset completed",
+        actor: "Mark Tan",
+      },
+    ],
+    timeline: [
+      {
+        title: "Request Created",
+        date: "08 Sep 2026",
+        status: "Completed",
+        description: "Reset initiated.",
+      },
+      {
+        title: "Closed",
+        date: "08 Sep 2026",
+        status: "Completed",
+        description: "Device re-authenticated.",
+      },
+    ],
+  },
+
+  // ==========================================
+  // CUSTOMER 6: Clarissa Mendoza (CIF10006)
+  // ==========================================
+  {
+    id: "SR6001",
+    customerId: "CIF10006",
+    type: "General Inquiry",
+    createdDate: "14 Sep 2026",
+    priority: "Low",
+    status: "In Progress",
+    assignedTo: "Clarissa Reyes (RM)",
+    description:
+      "Inquiry regarding tax withholding rules on USD Dollar Wealth Account interest earnings.",
+    sla: "24 Hours",
+    resolutionDate: "Target: 15 Sep 2026",
+    comments: [
+      {
+        user: "Clarissa Reyes",
+        date: "14 Sep 2026, 05:00 PM",
+        text: "Preparing formal tax computation guide for private banking clients.",
+      },
+    ],
+    activityHistory: [
+      {
+        date: "14 Sep 2026, 05:00 PM",
+        action: "Assigned to Private Banking RM",
+        actor: "Clarissa Reyes",
+      },
+    ],
+    timeline: [
+      {
+        title: "Request Created",
+        date: "14 Sep 2026",
+        status: "Completed",
+        description: "Inquiry received via Wealth Concierge.",
+      },
+      {
+        title: "Under Investigation",
+        date: "15 Sep 2026",
+        status: "Current",
+        description: "Tax specialist review.",
       },
     ],
   },
