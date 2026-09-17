@@ -179,6 +179,10 @@ const transactionNav = [
   },
 ] as const;
 
+const customerNav = [
+  { to: "/customer-management", label: "Customer 360 & Search", icon: Users },
+] as const;
+
 export function DashboardLayout({
   children,
   title,
@@ -191,6 +195,9 @@ export function DashboardLayout({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
+  const [customerOpen, setCustomerOpen] = useState(
+    pathname.includes("/customer-management") || true,
+  );
   const [feedbackOpen, setFeedbackOpen] = useState(true);
   const [cramOpen, setCramOpen] = useState(pathname.includes("/admin/cram"));
   const [transactionOpen, setTransactionOpen] = useState(
@@ -206,7 +213,50 @@ export function DashboardLayout({
         </div>
 
         <nav className="flex-1 overflow-y-auto p-3 custom-scrollbar">
+          {/* Customer Management (First menu) */}
           <div className="mb-4">
+            <button
+              onClick={() => setCustomerOpen(!customerOpen)}
+              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-sidebar-foreground hover:bg-sidebar-accent/50"
+            >
+              <div className="flex items-center gap-3">
+                <Users className="h-4 w-4 text-primary" />
+                <span>Customer Management</span>
+              </div>
+              {customerOpen ? (
+                <ChevronDown className="h-3 w-3" />
+              ) : (
+                <ChevronRight className="h-3 w-3" />
+              )}
+            </button>
+
+            {customerOpen && (
+              <div className="mt-1 ml-4 space-y-1 border-l border-sidebar-border/50 pl-2">
+                {customerNav.map((item) => {
+                  const Icon = item.icon;
+                  const active = pathname.startsWith("/customer-management");
+                  return (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all ${
+                        active
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-sm relative before:absolute before:left-[-9px] before:h-4 before:w-1 before:bg-primary before:rounded-r"
+                          : "text-sidebar-foreground hover:bg-sidebar-accent/50"
+                      }`}
+                    >
+                      <Icon
+                        className={`h-4 w-4 ${active ? "text-primary" : "text-muted-foreground group-hover:text-foreground"}`}
+                      />
+                      <span className="truncate">{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          <div className="mb-4 pt-4 border-t border-sidebar-border/30">
             <button
               onClick={() => setCramOpen(!cramOpen)}
               className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-sidebar-foreground hover:bg-sidebar-accent/50"
